@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { List, ListItemButton, ListItemText, Stack, Typography } from '@mui/material';
+import { Button, List, ListItemButton, ListItemText, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 //
 import useConfigContext from 'hooks/useConfigContext';
@@ -23,7 +23,17 @@ const TodoList: React.FC<{}> = () => {
   const { data: todos } = useGetTodoAllQuery();
 
   return (
-    <Stack sx={{ maxWidth: '60%', mx: 'auto', py: 5 }}>
+    <Stack sx={{ maxWidth: '60%', mx: 'auto', py: 5 }} gap={3}>
+      <Stack direction="row" alignItems="center" justifyContent="flex-end">
+        <Button
+          variant="text"
+          sx={{ width: 'fit-content', textTransform: 'capitalize' }}
+          onClick={() => navigation('/create')}
+        >
+          Create
+        </Button>
+      </Stack>
+
       <MainCard content={false}>
         <List
           component="nav"
